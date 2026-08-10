@@ -1,0 +1,15 @@
+{
+  "name": "inventory-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERN Inventory Management System",
+  "scripts": {
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "start:server": "npm start --prefix server",
+    "build:client": "npm run build --prefix client"
+  },
+  "keywords": ["inventory", "mern"],
+  "license": "MIT"
+}
