@@ -2,6 +2,7 @@
 
 A full-stack inventory management application with JWT authentication, RBAC, product/category CRUD, stock adjustments, dashboard analytics, and stock history.
 
+SEE LIVE : https://inventory-eosin-psi.vercel.app/
 ## Tech Stack
 
 | Layer | Technologies |
