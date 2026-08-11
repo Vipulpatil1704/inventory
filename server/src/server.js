@@ -5,10 +5,12 @@ import env from './config/env.js';
 async function start() {
   try {
     await connectDB();
+    if (env.NODE_ENV === 'development') {
     app.listen(env.port, () => {
       console.log(`Server running on http://localhost:${env.port}`);
       console.log(`Swagger docs: http://localhost:${env.port}/api/docs`);
     });
+  }
   } catch (error) {
     console.error('Failed to start server:', error.message);
     process.exit(1);
