@@ -1,5 +1,20 @@
 import AppError from '../utils/AppError.js';
 
+const setRequestSource = (req, source, value) => {
+  // Express 5 exposes req.query as a getter-only property
+  if (source === 'query') {
+    Object.defineProperty(req, 'query', {
+      value,
+      writable: true,
+      configurable: true,
+      enumerable: true,
+    });
+    return;
+  }
+
+  req[source] = value;
+};
+
 const validate =
   (schema, source = 'body') =>
   (req, res, next) => {
@@ -11,7 +26,7 @@ const validate =
       }));
       return next(new AppError('Validation failed', 422, errors));
     }
-    req[source] = result.data;
+    setRequestSource(req, source, result.data);
     return next();
   };
 
