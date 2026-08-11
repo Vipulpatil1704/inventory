@@ -5,7 +5,7 @@ import env from './config/env.js';
 async function start() {
   try {
     await connectDB();
-    if (env.NODE_ENV === 'development') {
+    if (env.nodeEnv === 'development') {
     app.listen(env.port, () => {
       console.log(`Server running on http://localhost:${env.port}`);
       console.log(`Swagger docs: http://localhost:${env.port}/api/docs`);

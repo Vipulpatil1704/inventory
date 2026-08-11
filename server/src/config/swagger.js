@@ -1,5 +1,10 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import swaggerJsdoc from 'swagger-jsdoc';
 import env from './env.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const routeGlob = path.join(__dirname, '../routes/*.js').replace(/\\/g, '/');
 
 const options = {
   definition: {
@@ -11,6 +16,10 @@ const options = {
         'REST API for the MERN Inventory Management System with JWT authentication and RBAC.',
     },
     servers: [
+      {
+        url: '/api',
+        description: 'Current host',
+      },
       {
         url: `http://localhost:${env.port}/api`,
         description: 'Local development server',
@@ -27,7 +36,7 @@ const options = {
     },
     security: [{ bearerAuth: [] }],
   },
-  apis: ['./src/routes/*.js'],
+  apis: [routeGlob],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
